@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nextcloud-config
+data:
+  config.php: |
+    <?php
+    $CONFIG = array (
+    'instanceid' => 'oc12345678',
+    'passwordsalt' => 'abcdefghijklmnopqrstuvwxyz',
+    'secret' => 'abcdefghijklmnopqrstuvwxyz',
+    'trusted_domains' =>
+      array (
+        0 => 'nextcloud.example.com',
+      ),
+    'datadirectory' => '/var/www/html/data',
+    'overwrite.cli.url' => 'http://nextcloud.example.com',
+    'dbtype' => 'mysql',
+    'version' => '20.0.0.10',
+    'dbname' => 'nextcloud',
+    'dbhost' => 'nextcloud-mysql',
+    'dbport' => '',
+    'dbtableprefix' => 'oc_',
+    'dbuser' => 'nextcloud',
+    'dbpassword' => 'password',
+    'installed' => true,
+    );
