@@ -63,17 +63,15 @@ kubectl delete -f . -n nextcloud
 ```
 Troubleshooting
 If you encounter any issues with the deployment, you can use the following command to view the logs for the Nextcloud and MySQL pods:
-
-sh
-Copy code
+```
 kubectl logs -f <pod-name> -n nextcloud
+```
 You can also check the events and status of the resources using
 
-sh
-Copy code
+```
 kubectl describe <resource-type> <resource-name> -n nextcloud
-sql
-Copy code
+```
+
 It is important to note that you will need to replace the placeholder values in the commands above with actual values that are specific to your deployment.
 
 Also, make sure that the version of the services and images are compatible with your kubernetes version.
