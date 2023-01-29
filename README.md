@@ -13,50 +13,54 @@ This repository contains a set of YAML files that can be used to deploy Nextclou
 
 1. Build the Nextcloud Docker image and push it to a container registry, such as Docker Hub.
 2. Create a new namespace for the deployment:
-```sh
+```
 kubectl create namespace nextcloud
+```
 Create a Secret that contains the database credentials:
-sh
-Copy code
+
+```
 kubectl apply -f nextcloud-secret.yaml -n nextcloud
+```
 Create a ConfigMap that contains the nginx ingress controller configuration:
-sh
-Copy code
+```
 kubectl apply -f nginx-ingress-configmap.yaml -n nextcloud
+```
 Create a Secret that contains the SSL certificate and key:
-sh
-Copy code
+
+```
 kubectl apply -f nginx-ingress-secret.yaml -n nextcloud
+```
 Create a Persistent Volume Claim:
-sh
-Copy code
+```
 kubectl apply -f nextcloud-pvc.yaml -n nextcloud
+```
 Create the MySQL deployment:
-sh
-Copy code
+```
 kubectl apply -f mysql-deployment.yaml -n nextcloud
+```
 Create the Nextcloud deployment:
-sh
-Copy code
+```
 kubectl apply -f nextcloud-deployment.yaml -n nextcloud
+```
 Create the services:
-sh
-Copy code
+```
 kubectl apply -f nextcloud-service.yaml -n nextcloud
 kubectl apply -f mysql-service.yaml -n nextcloud
+```
 Create the ingress resources
-sh
-Copy code
+```
 kubectl apply -f nextcloud-ingress.yaml -n nextcloud
+```
+
 Accessing Nextcloud
 Once the deployment is complete, you should be able to access the Nextcloud app using the domain name that you have configured in the ingress resource.
 
 Cleanup
 To remove the Nextcloud deployment from the cluster, use the following command:
 
-sh
-Copy code
+```
 kubectl delete -f . -n nextcloud
+```
 Troubleshooting
 If you encounter any issues with the deployment, you can use the following command to view the logs for the Nextcloud and MySQL pods:
 
