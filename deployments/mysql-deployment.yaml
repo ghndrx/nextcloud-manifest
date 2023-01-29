@@ -19,13 +19,25 @@ spec:
         - containerPort: 3306
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: "password"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql_root_password
         - name: MYSQL_DATABASE
-          value: "nextcloud"
+          valueFrom:
+            configMapKeyRef:
+              name: mysql-configmap
+              key: mysql_database
         - name: MYSQL_USER
-          value: "nextcloud"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql_user
         - name: MYSQL_PASSWORD
-          value: "password"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql_password
         volumeMounts:
         - name: mysql-data
           mountPath: /var/lib/mysql
